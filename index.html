@@ -2,8 +2,10 @@
 <html>
 <title>Simply Complex</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="lib/w3.css">
-<link rel="stylesheet" href="lib/Raleway.css">
+<link rel="stylesheet" href="lib/css/w3.css">
+<link rel="stylesheet" href="lib/css/Raleway.css">
+<script type="text/javascript" src="lib/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="lib/js/simplex.js"></script>
 <style>
 body,
 h1,
@@ -31,10 +33,10 @@ html {
         </div>
         <div class="w3-display-topleft w3-padding-jumbo w3-xlarge">
             <p>
-                <button onclick="document.getElementById('menu').style.display='block'" class="w3-btn w3-hover-light-grey">ultimate optimizer</button>
+                <button onclick="document.getElementById('optimizer').style.display='block'" class="w3-btn w3-hover-light-grey">ultimate optimizer</button>
             </p>
             <p>
-                <button onclick="document.getElementById('contact').style.display='block'" class="w3-btn w3-hover-light-grey">diet problem solver</button>
+                <button class="w3-btn w3-light-grey w3-padding" onclick="document.getElementById('diet').style.display='block'" class="w3-btn w3-hover-light-grey">diet problem solver</button>
             </p>
         </div>
         <div class="w3-display-bottomleft w3-padding-jumbo">
@@ -43,17 +45,20 @@ html {
             <p>powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
         </div>
     </div>
-    <!-- Menu Modal -->
-    <div id="menu" class="w3-modal">
+    <!-- Ultimate Optimizer Modal -->
+    <div id="optimizer" class="w3-modal">
         <div class="w3-modal-content w3-animate-zoom">
             <div class="w3-container w3-black">
-                <span onclick="document.getElementById('menu').style.display='none'" class="w3-closebtn w3-xxlarge w3-hover-text-grey">x</span>
-                <h1>Starters</h1>
+                <span onclick="document.getElementById('optimizer').style.display='none'" class="w3-closebtn w3-xxlarge w3-hover-text-grey">x</span>
+                <h1>Objective Function</h1>
             </div>
             <div class="w3-container">
-                <h5>Tomato Soup <b>$2.50</b></h5>
-                <h5>Chicken Salad <b>$3.50</b></h5>
-                <h5>Bread and Butter <b>$1.00</b></h5>
+                <p>Enter coefficient of unknowns (delimited by comma):</p>
+                    <p>
+                        <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="ex.: 15.2,-3,45" required name="unknown" id="unknown">
+                    </p>
+                    <input id="submit" type="button" onclick="createObjectiveFunction()" value="Create Function">
+                    <p id="obj_fxn"></p>
             </div>
             <div class="w3-container w3-black">
                 <h1>Main Courses</h1>
@@ -76,11 +81,11 @@ html {
             </div>
         </div>
     </div>
-    <!-- Contact Modal -->
-    <div id="contact" class="w3-modal">
+    <!-- Diet Problem Solver Modal -->
+    <div id="diet" class="w3-modal">
         <div class="w3-modal-content w3-animate-zoom">
             <div class="w3-container w3-black">
-                <span onclick="document.getElementById('contact').style.display='none'" class="w3-closebtn w3-xxlarge w3-hover-text-grey">x</span>
+                <span onclick="document.getElementById('diet').style.display='none'" class="w3-closebtn w3-xxlarge w3-hover-text-grey">x</span>
                 <h1>Contact</h1>
             </div>
             <div class="w3-container">
